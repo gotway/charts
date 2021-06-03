@@ -8,6 +8,10 @@ spec:
   type: {{ .Values.service.type }}
   ports:
     - port: {{ .Values.service.interalPort }}
-      nodePort: {{ .Values.service.externalPort }}
+      {{ if or (eq .Values.service.type "NodePort") (eq .Values.service.type "LoadBalancer") }}
+      {{ with .Values.service.externalPort }}
+      nodePort: {{ . }}
+      {{ end }}
+      {{ end }}
   selector:
     {{ include "gotway.selectorLabels" . | nindent 4 }}
