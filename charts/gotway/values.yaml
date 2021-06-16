@@ -4,7 +4,7 @@ fullnameOverride: ""
 image:
   repository: gotwaygateway/gotway
   pullPolicy: IfNotPresent
-  tag: "v0.0.2"
+  tag: "v0.0.5"
 
 service:
   type: NodePort
@@ -30,12 +30,6 @@ ingressRoute:
     - websecure
 
 env: production
-
-databaseType: redis
-
-redisConfig:
-  address: gotway-redis:6379
-  db: 0
 
 healthCheck:
   intervalSeconds: 10
@@ -67,7 +61,7 @@ serviceExamples:
     image:
       repository: gotwaygateway/catalog
       pullPolicy: IfNotPresent
-      tag: "v0.0.2"
+      tag: "v0.0.1"
 
     service:
       type: ClusterIP
@@ -91,7 +85,7 @@ serviceExamples:
     image:
       repository: gotwaygateway/route
       pullPolicy: IfNotPresent
-      tag: "v0.0.2"
+      tag: "v0.0.1"
 
     service:
       type: ClusterIP
@@ -105,7 +99,7 @@ serviceExamples:
     image:
       repository: gotwaygateway/stock
       pullPolicy: IfNotPresent
-      tag: "v0.0.2"
+      tag: "v0.0.1"
 
     service:
       type: ClusterIP

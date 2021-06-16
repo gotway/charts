@@ -57,6 +57,8 @@ spec:
           envFrom:
             - configMapRef:
                 name: {{ $fullName }}
+            - secretRef:
+                name: {{ $fullName }}
       {{ if .Values.tlsEnabled }}
           volumeMounts:
           - name: tls
@@ -65,5 +67,5 @@ spec:
       volumes:
       - name: tls
         secret:
-          secretName: {{ $fullName }}
+          secretName: {{ $fullName }}-tls
       {{ end }}
