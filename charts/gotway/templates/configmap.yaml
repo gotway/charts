@@ -8,6 +8,8 @@ data:
   PORT: {{ .Values.service.interalPort | quote }}
   ENV: {{ .Values.env }}
   LOG_LEVEL: {{ .Values.logLevel }}
+  HEALTH_CHECK_NUM_WORKERS: {{ .Values.healthCheck.numWorkers | quote }}
+  HEALTH_CHECK_BUFFER_SIZE: {{ .Values.healthCheck.bufferSize | quote }}
   HEALTH_CHECK_INTERVAL_SECONDS: {{ .Values.healthCheck.intervalSeconds | quote }}
   HEALTH_CHECK_TIMEOUT_SECONDS: {{ .Values.healthCheck.timeoutSeconds | quote }}
   TLS: {{ .Values.tlsEnabled | quote }}

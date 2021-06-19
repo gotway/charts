@@ -34,6 +34,8 @@ env: production
 logLevel: info
 
 healthCheck:
+  numWorkers: 10
+  bufferSize: 10
   intervalSeconds: 10
   timeoutSeconds: 5
 
