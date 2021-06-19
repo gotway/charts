@@ -7,6 +7,7 @@ metadata:
 data:
   PORT: {{ .Values.service.interalPort | quote }}
   ENV: {{ .Values.env }}
+  LOG_LEVEL: {{ .Values.logLevel }}
   HEALTH_CHECK_INTERVAL_SECONDS: {{ .Values.healthCheck.intervalSeconds | quote }}
   HEALTH_CHECK_TIMEOUT_SECONDS: {{ .Values.healthCheck.timeoutSeconds | quote }}
   TLS: {{ .Values.tlsEnabled | quote }}
@@ -14,3 +15,6 @@ data:
   TLS_CERT: "/etc/ssl/tls.crt"
   TLS_KEY: "/etc/ssl/tls.key"
   {{ end }}
+  METRICS: {{ .Values.metrics.enabled | quote }}
+  METRICS_PATH: {{ .Values.metrics.path }}
+  METRICS_PORT: {{ .Values.metrics.path }}

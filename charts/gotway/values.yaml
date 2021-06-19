@@ -31,9 +31,22 @@ ingressRoute:
 
 env: production
 
+logLevel: info
+
 healthCheck:
   intervalSeconds: 10
   timeoutSeconds: 5
+
+metrics:
+  enabled: true
+  path: /metrics
+  port: 2112
+  serviceMonitor:
+    namespace: monitoring
+    interval: 30s
+    timeout: 10s
+    labels:
+      release: monitoring
 
 resources:
   requests:
