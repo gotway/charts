@@ -1,13 +1,13 @@
 {{ $fullName := include "gotway.fullname" . }}
 {{ $selectorLabels := include "gotway.selectorLabels" . }}
-{{ with .Values.metrics }}
+{{ with .Values.monitoring }}
 {{ if .enabled }}
 apiVersion: monitoring.coreos.com/v1
 kind: ServiceMonitor
 metadata:
   name: {{ $fullName }}
-  namespace: {{ .serviceMonitor.namespace }}
-  {{ with .serviceMonitor.labels }}
+  namespace: {{ .namespace }}
+  {{ with .labels }}
   labels:
     {{ toYaml . | nindent 4 }}
   {{ end }}
@@ -18,9 +18,8 @@ spec:
   namespaceSelector:
     any: true
   endpoints:
-    - targetPort: {{ .port }}
+    - port: metrics
       path: {{ .path }}
-      interval: {{ .serviceMonitor.interval }}
-      scrapeTimeout: {{ .serviceMonitor.timeout }}
+      interval: {{ .interval }}
 {{ end }}
 {{ end }}

@@ -15,6 +15,6 @@ data:
   TLS_CERT: "/etc/ssl/tls.crt"
   TLS_KEY: "/etc/ssl/tls.key"
   {{ end }}
-  METRICS: {{ .Values.metrics.enabled | quote }}
-  METRICS_PATH: {{ .Values.metrics.path }}
-  METRICS_PORT: {{ .Values.metrics.path }}
+  METRICS: {{ .Values.monitoring.enabled | quote }}
+  METRICS_PATH: {{ .Values.monitoring.path }}
+  METRICS_PORT: {{ .Values.monitoring.port | quote }}

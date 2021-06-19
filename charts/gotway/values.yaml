@@ -37,16 +37,14 @@ healthCheck:
   intervalSeconds: 10
   timeoutSeconds: 5
 
-metrics:
+monitoring:
   enabled: true
   path: /metrics
   port: 2112
-  serviceMonitor:
-    namespace: monitoring
-    interval: 30s
-    timeout: 10s
-    labels:
-      release: monitoring
+  namespace: monitoring
+  interval: 10s
+  labels:
+    release: monitoring
 
 resources:
   requests:
