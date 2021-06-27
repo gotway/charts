@@ -74,7 +74,7 @@ serviceExamples:
     image:
       repository: gotwaygateway/catalog
       pullPolicy: IfNotPresent
-      tag: "v0.0.1"
+      tag: "v0.0.2"
 
     service:
       type: ClusterIP
@@ -98,7 +98,7 @@ serviceExamples:
     image:
       repository: gotwaygateway/route
       pullPolicy: IfNotPresent
-      tag: "v0.0.1"
+      tag: "v0.0.2"
 
     service:
       type: ClusterIP
@@ -112,7 +112,7 @@ serviceExamples:
     image:
       repository: gotwaygateway/stock
       pullPolicy: IfNotPresent
-      tag: "v0.0.1"
+      tag: "v0.0.2"
 
     service:
       type: ClusterIP
