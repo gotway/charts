@@ -1,10 +1,14 @@
 nameOverride: ""
 fullnameOverride: ""
 
+env: production
+
+logLevel: info
+
 image:
   repository: gotwaygateway/gotway
   pullPolicy: IfNotPresent
-  tag: "v0.0.5"
+  tag: "v0.0.11"
 
 service:
   type: NodePort
@@ -13,31 +17,19 @@ service:
 
 tlsEnabled: true
 
-livenessProbe:
-  initialDelaySeconds: 10
-  timeoutSeconds: 3
-  periodSeconds: 15
-    
-readinessProbe:
-  initialDelaySeconds: 10
-  timeoutSeconds: 3
-  periodSeconds: 15
-
-ingressRoute:
-  enabled: true
-  host: api.gotway.duckdns.org
-  entrypoints:
-    - websecure
-
-env: production
-
-logLevel: info
+gatewayTimeout: 5
 
 healthCheck:
+  enabled: true
   numWorkers: 10
   bufferSize: 10
   intervalSeconds: 10
   timeoutSeconds: 5
+
+cache:
+  enabled: true
+  numWorkers: 10
+  bufferSize: 10
 
 monitoring:
   enabled: true
@@ -47,6 +39,20 @@ monitoring:
   interval: 10s
   labels:
     release: monitoring
+
+pprof:
+  enabled: false
+  port: 6060
+
+livenessProbe:
+  initialDelaySeconds: 10
+  timeoutSeconds: 3
+  periodSeconds: 15
+
+readinessProbe:
+  initialDelaySeconds: 10
+  timeoutSeconds: 3
+  periodSeconds: 15
 
 resources:
   requests:
@@ -67,14 +73,14 @@ autoscaling:
 
 nodeSelector: {}
 
-serviceExamples:
+examples:
   enabled: true
 
   catalog:
     image:
       repository: gotwaygateway/catalog
       pullPolicy: IfNotPresent
-      tag: "v0.0.2"
+      tag: "v0.0.3"
 
     service:
       type: ClusterIP
@@ -84,7 +90,7 @@ serviceExamples:
       initialDelaySeconds: 10
       timeoutSeconds: 3
       periodSeconds: 15
-    
+
     readinessProbe:
       initialDelaySeconds: 10
       timeoutSeconds: 3
@@ -94,25 +100,11 @@ serviceExamples:
 
     nodeSelector: {}
 
-  route:
-    image:
-      repository: gotwaygateway/route
-      pullPolicy: IfNotPresent
-      tag: "v0.0.2"
-
-    service:
-      type: ClusterIP
-      port: 80
-
-    resources: {}
-
-    nodeSelector: {}
-
   stock:
     image:
       repository: gotwaygateway/stock
       pullPolicy: IfNotPresent
-      tag: "v0.0.2"
+      tag: "v0.0.3"
 
     service:
       type: ClusterIP
@@ -129,12 +121,36 @@ serviceExamples:
       initialDelaySeconds: 10
       timeoutSeconds: 3
       periodSeconds: 15
-    
+
     readinessProbe:
       initialDelaySeconds: 10
       timeoutSeconds: 3
       periodSeconds: 15
+
+    resources: {}
+
+    nodeSelector: {}
+
+  traffic:
+    enabled: false
+
+    image:
+      repository: gotwaygateway/traffic
+      pullPolicy: IfNotPresent
+      tag: "v0.0.1"
+
+    gotwayHost: "gotway.duckdns.org:4433"
+    catalogHost: "catalog.gotway.duckdns.org:4433"
+    stockHost: "stock.gotway.duckdns.org:4433"
     
+    clientTimeout: 10
+
+    numWorkers: 5
+
+    numClients: 2
+
+    requestInterval: 10
+
     resources: {}
 
     nodeSelector: {}

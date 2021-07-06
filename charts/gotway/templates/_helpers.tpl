@@ -81,29 +81,6 @@ Labels Catalog
 {{- end }}
 
 {{/*
-Full name Route
-*/}}
-{{- define "gotway.fullnameRoute" -}}
-{{- printf "%s-%s" (include "gotway.fullname" .) "route" | trunc 63 | trimSuffix "-" }}
-{{- end }}
-
-{{/*
-Selector labels Route
-*/}}
-{{- define "gotway.selectorLabelsRoute" -}}
-app.kubernetes.io/name: {{ include "gotway.fullnameRoute" . }}
-app.kubernetes.io/instance: {{ .Release.Name }}
-{{- end }}
-
-{{/*
-Labels Route
-*/}}
-{{- define "gotway.labelsRoute" -}}
-{{ include "gotway.commonLabels" . }}
-{{ include "gotway.selectorLabelsRoute" . }}
-{{- end }}
-
-{{/*
 Full name Stock
 */}}
 {{- define "gotway.fullnameStock" -}}
@@ -124,4 +101,27 @@ Labels Stock
 {{- define "gotway.labelsStock" -}}
 {{ include "gotway.commonLabels" . }}
 {{ include "gotway.selectorLabelsStock" . }}
+{{- end }}
+
+{{/*
+Full name Traffic
+*/}}
+{{- define "gotway.fullnameTraffic" -}}
+{{- printf "%s-%s" (include "gotway.fullname" .) "traffic" | trunc 63 | trimSuffix "-" }}
+{{- end }}
+
+{{/*
+Selector labels Traffic
+*/}}
+{{- define "gotway.selectorLabelsTraffic" -}}
+app.kubernetes.io/name: {{ include "gotway.fullnameTraffic" . }}
+app.kubernetes.io/instance: {{ .Release.Name }}
+{{- end }}
+
+{{/*
+Labels Traffic
+*/}}
+{{- define "gotway.labelsTraffic" -}}
+{{ include "gotway.commonLabels" . }}
+{{ include "gotway.selectorLabelsTraffic" . }}
 {{- end }}

@@ -1,5 +1,5 @@
-{{ if $.Values.serviceExamples.enabled }}
-{{ with $.Values.serviceExamples.stock }}
+{{ if $.Values.examples.enabled }}
+{{ with $.Values.examples.stock }}
 apiVersion: v1
 kind: ConfigMap
 metadata:

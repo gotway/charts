@@ -1,5 +1,5 @@
-{{ if $.Values.serviceExamples.enabled }}
-{{ with $.Values.serviceExamples.catalog }}
+{{ if $.Values.examples.enabled }}
+{{ with $.Values.examples.catalog }}
 apiVersion: v1
 kind: Service
 metadata:
