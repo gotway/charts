@@ -9,7 +9,7 @@ source ./scripts/common.sh
 update_deps
 
 for path in $(ls -d charts/*); do
-    name=$(basename "$path")
-    echo "📦 Releasing '${name}'..."
-    helm push "$path" gotway
+  name=$(basename "$path")
+  echo "📦 Releasing '${name}'..."
+  helm cm-push "$path" gotway
 done
