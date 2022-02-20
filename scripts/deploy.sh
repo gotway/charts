@@ -5,11 +5,14 @@ set -e
 source ./scripts/common.sh
 update_deps
 
-echo "☸️  Loading manifests..."
-kubectl apply -f manifests/
+echo "☸️  Creating namespaces..."
+kubectl apply -f manifests/namespaces
 
-for path in $(ls -d charts/*); do
-  chart=$(basename "$path")
-  echo "🚀 Deploying '${chart}'..."
-  helm upgrade --install "$chart" "$path"
-done
+echo "☸️  Creating secrets..."
+kubectl apply -f manifests/secrets
+
+echo "🚀 Deploying chartmuseum..."
+helm upgrade gotway-charts charts/gotway-charts --install --namespace chartmuseum
+
+echo "🚀 Deploying gotway..."
+helm upgrade gotway charts/gotway --install --namespace gotway
