@@ -21,9 +21,3 @@ version: 0.1.0
 # incremented each time you make changes to the application. Versions are not expected to
 # follow Semantic Versioning. They should reflect the version the application is using.
 appVersion: 0.0.2
-
-
-dependencies:
-  - name: redis
-    version: "0.1.0"
-    repository: https://charts.mmontes-dev.duckdns.org

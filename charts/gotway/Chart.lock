@@ -1,6 +1,0 @@
-dependencies:
-- name: redis
-  repository: https://charts.mmontes-dev.duckdns.org
-  version: 0.1.0
-digest: sha256:ee7ccfbc3e8419adcd326d4fce777210f435cd990fd7d100488bc9c9a8c8d40c
-generated: "2021-04-12T23:07:23.004735+02:00"

@@ -1,6 +1,0 @@
-dependencies:
-- name: chartmuseum
-  repository: https://charts.mmontes-dev.duckdns.org
-  version: 0.1.0
-digest: sha256:ddc8d07157340a5d9ccd9d8f5a27cc12bb24841607be757422a71ea034cab012
-generated: "2021-04-12T23:08:35.033242+02:00"

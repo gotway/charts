@@ -15,6 +15,9 @@ service:
   interalPort: 443
   externalPort: 4433
 
+secretRef:
+  name: gotway
+
 tlsEnabled: true
 
 gatewayTimeout: 5
@@ -142,7 +145,7 @@ examples:
     gotwayHost: "gotway.duckdns.org:4433"
     catalogHost: "catalog.gotway.duckdns.org:4433"
     stockHost: "stock.gotway.duckdns.org:4433"
-    
+
     clientTimeout: 10
 
     numWorkers: 5
