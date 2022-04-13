@@ -114,7 +114,6 @@ examples:
       port: 80
 
     redis:
-      address: gotway-redis:6379
       db: 1
       prefix: "stock::"
       ttlDefault: 300
@@ -157,12 +156,3 @@ examples:
     resources: {}
 
     nodeSelector: {}
-
-# dependencies
-
-redis:
-  prometheus-redis-exporter:
-    redisAddress: redis://gotway-redis:6379
-    serviceMonitor:
-      labels:
-        release: monitoring
