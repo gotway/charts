@@ -68,15 +68,6 @@ resources:
     cpu: 300m
     memory: "512Mi"
 
-replicaCount: 1
-
-autoscaling:
-  enabled: false
-  minReplicas: 1
-  maxReplicas: 4
-  targetCPUUtilizationPercentage: 50
-  targetMemoryUtilizationPercentage: 50
-
 nodeSelector: {}
 
 examples:

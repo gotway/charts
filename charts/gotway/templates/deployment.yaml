@@ -7,7 +7,6 @@ metadata:
   labels:
     {{ include "gotway.labels" . | nindent 4 }}
 spec:
-  replicas: {{ .Values.replicaCount }}
   selector:
     matchLabels:
       {{ $selectorLabels | nindent 6 }}
@@ -23,7 +22,7 @@ spec:
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           ports:
             - name: service
-              containerPort: {{ .Values.service.interalPort }}
+              containerPort: {{ .Values.service.port }}
           livenessProbe:
             httpGet:
               {{ if .Values.tlsEnabled }}
