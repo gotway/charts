@@ -78,7 +78,7 @@ examples:
     image:
       repository: gotwaygateway/catalog
       pullPolicy: IfNotPresent
-      tag: "v0.0.3"
+      tag: "v0.0.4"
 
     service:
       type: ClusterIP
@@ -102,14 +102,13 @@ examples:
     image:
       repository: gotwaygateway/stock
       pullPolicy: IfNotPresent
-      tag: "v0.0.3"
+      tag: "v0.0.4"
 
     service:
       type: ClusterIP
       port: 80
 
     redis:
-      db: 1
       prefix: "stock::"
       ttlDefault: 300
       ttlMax: 86400
