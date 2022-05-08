@@ -42,10 +42,9 @@ monitoring:
   enabled: true
   path: /metrics
   port: 2112
-  namespace: monitoring
   interval: 10s
   labels:
-    release: monitoring
+    release: kube-prometheus-stack
 
 pprof:
   enabled: false

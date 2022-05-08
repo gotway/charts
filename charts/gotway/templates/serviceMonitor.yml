@@ -6,7 +6,6 @@ apiVersion: monitoring.coreos.com/v1
 kind: ServiceMonitor
 metadata:
   name: {{ $fullName }}
-  namespace: {{ .namespace }}
   {{ with .labels }}
   labels:
     {{ toYaml . | nindent 4 }}
