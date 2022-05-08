@@ -5,7 +5,7 @@ metadata:
   labels:
     {{ include "gotway.labels" . | nindent 4 }}
 data:
-  PORT: {{ .Values.service.interalPort | quote }}
+  PORT: {{ .Values.service.port | quote }}
   ENV: {{ .Values.env }}
   LOG_LEVEL: {{ .Values.logLevel }}
   GATEWAY_TIMEOUT_SECONDS: {{ .Values.gatewayTimeout | quote }}

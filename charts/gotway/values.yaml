@@ -11,9 +11,13 @@ image:
   tag: "v0.0.11"
 
 service:
-  type: NodePort
-  interalPort: 443
-  externalPort: 4433
+  type: LoadBalancer
+  port: 443
+  nodePort: 9111
+  annotations:
+    metallb.universe.tf/loadBalancerIPs: 192.168.0.91
+  spec:
+    externalTrafficPolicy: Local
 
 secretRef:
   name: gotway
