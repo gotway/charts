@@ -14,6 +14,5 @@ helm repo update
 for path in $(ls -d $CURRENT_DIR/../charts/*); do
   name=$(basename "$path")
   echo "📦 Releasing '$name'..."
-  helm dep update "$path"
   helm cm-push "$path" gotway
 done
