@@ -8,6 +8,9 @@ data:
   PORT: {{ .Values.service.port | quote }}
   ENV: {{ .Values.env }}
   LOG_LEVEL: {{ .Values.logLevel }}
+  {{ with .Values.redisUrl }}
+  REDIS_URL: {{ . | quote }}
+  {{ end }}
   GATEWAY_TIMEOUT_SECONDS: {{ .Values.gatewayTimeout | quote }}
   HEALTH: {{ .Values.healthCheck.enabled | quote }}
   {{ if .Values.healthCheck.enabled }}

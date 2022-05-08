@@ -20,8 +20,9 @@ service:
     {}
     # externalTrafficPolicy: Local
 
-secretRef:
-  name: gotway
+secretRef: {}
+
+redisUrl: &redisUrl "redis://redis:6379/11"
 
 tlsEnabled: true
 
@@ -40,7 +41,7 @@ cache:
   bufferSize: 10
 
 monitoring:
-  enabled: true
+  enabled: false
   path: /metrics
   port: 2112
   interval: 10s
@@ -72,7 +73,7 @@ resources:
 nodeSelector: {}
 
 examples:
-  enabled: true
+  enabled: false
 
   catalog:
     image:
@@ -109,6 +110,7 @@ examples:
       port: 80
 
     redis:
+      url: *redisUrl
       prefix: "stock::"
       ttlDefault: 300
       ttlMax: 86400

@@ -8,6 +8,9 @@ metadata:
     {{ include "gotway.labelsStock" $ | nindent 4 }}
 data:
   PORT: {{ .service.port | quote }}
+  {{ with .redis.url }}
+  REDIS_URL: {{ . | quote }}
+  {{ end}}
   REDIS_PREFIX: {{ .redis.prefix | quote }}
   REDIS_TTL_DEFAULT: {{ .redis.ttlDefault | quote }}
   REDIS_TTL_MAX: {{ .redis.ttlMax | quote }}
