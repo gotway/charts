@@ -13,7 +13,6 @@ image:
 service:
   type: LoadBalancer
   port: 443
-  nodePort: 9111
   annotations:
     {}
     # metallb.universe.tf/loadBalancerIPs: 192.168.0.91
