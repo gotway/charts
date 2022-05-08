@@ -137,9 +137,9 @@ examples:
       pullPolicy: IfNotPresent
       tag: "v0.0.1"
 
-    gotwayHost: "gotway.duckdns.org:4433"
-    catalogHost: "catalog.gotway.duckdns.org:4433"
-    stockHost: "stock.gotway.duckdns.org:4433"
+    gotwayHost: "gotway.duckdns.org:9111"
+    catalogHost: "catalog.gotway.duckdns.org:9111"
+    stockHost: "stock.gotway.duckdns.org:9111"
 
     clientTimeout: 10
 
