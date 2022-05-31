@@ -20,6 +20,9 @@ service:
     {}
     # externalTrafficPolicy: Local
 
+rbac:
+  create: true
+
 secretRef: {}
 
 redisUrl: &redisUrl "redis://redis:6379/11"
@@ -85,6 +88,10 @@ examples:
       type: ClusterIP
       port: 80
 
+    ingresshttp:
+      host: catalog.gotway.duckdns.org:9111
+      healthPath: /health
+
     livenessProbe:
       initialDelaySeconds: 10
       timeoutSeconds: 3
@@ -108,6 +115,18 @@ examples:
     service:
       type: ClusterIP
       port: 80
+
+    ingresshttp:
+      host: stock.gotway.duckdns.org:9111
+      healthPath: /health
+      cache:
+        ttl: 30
+        statuses:
+          - 200
+          - 404
+        tags:
+          - "catalog"
+          - "products"
 
     redis:
       url: *redisUrl
