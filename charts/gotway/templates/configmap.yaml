@@ -1,7 +1,8 @@
+{{ $fullname := include "gotway.fullname" . }}
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: {{ include "gotway.fullname" . }}
+  name: {{ $fullname }}
   labels:
     {{ include "gotway.labels" . | nindent 4 }}
 data:
@@ -14,8 +15,8 @@ data:
   GATEWAY_TIMEOUT_SECONDS: {{ .Values.gatewayTimeout | quote }}
   HA: {{ .Values.ha.enabled | quote }}
   {{ if .Values.ha.enabled }}
-  HA_LEASE_LOCK_NAME: {{ .Values.ha.leaderElection.leaseLockName | quote }}
-  HA_LEASE_LOCK_NAMESPACE: {{ .Values.ha.leaderElection.leaseLockNamespace | quote }}
+  HA_LEASE_LOCK_NAME: {{ $fullname | quote }}
+  HA_LEASE_LOCK_NAMESPACE: {{ .Release.Namespace | quote }}
   HA_LEASE_DURATION_SECONDS: {{ .Values.ha.leaderElection.leaseDurationSeconds | quote }}
   HA_RENEW_DEADLINE_SECONDS: {{ .Values.ha.leaderElection.renewDeadlineSeconds | quote }}
   HA_RETRY_PERIOD_SECONDS: {{ .Values.ha.leaderElection.retryPeriodSeconds | quote }}
