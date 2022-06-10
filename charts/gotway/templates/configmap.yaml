@@ -12,6 +12,14 @@ data:
   REDIS_URL: {{ . | quote }}
   {{ end }}
   GATEWAY_TIMEOUT_SECONDS: {{ .Values.gatewayTimeout | quote }}
+  HA: {{ .Values.ha.enabled | quote }}
+  {{ if .Values.ha.enabled }}
+  HA_LEASE_LOCK_NAME: {{ .Values.ha.leaderElection.leaseLockName | quote }}
+  HA_LEASE_LOCK_NAMESPACE: {{ .Values.ha.leaderElection.leaseLockNamespace | quote }}
+  HA_LEASE_DURATION_SECONDS: {{ .Values.ha.leaderElection.leaseDurationSeconds | quote }}
+  HA_RENEW_DEADLINE_SECONDS: {{ .Values.ha.leaderElection.renewDeadlineSeconds | quote }}
+  HA_RETRY_PERIOD_SECONDS: {{ .Values.ha.leaderElection.retryPeriodSeconds | quote }}
+  {{ end }}
   HEALTH: {{ .Values.healthCheck.enabled | quote }}
   {{ if .Values.healthCheck.enabled }}
   HEALTH_CHECK_NUM_WORKERS: {{ .Values.healthCheck.numWorkers | quote }}

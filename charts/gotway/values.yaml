@@ -31,6 +31,16 @@ tlsEnabled: true
 
 gatewayTimeout: 5
 
+ha:
+  enabled: true
+  leaderElection:
+    leaseLockName: gotway
+    leaseLockNamespace: gotway-system
+    leaseDurationSeconds: 15
+    renewDeadlineSeconds: 10
+    retryPeriodSeconds: 2
+  replicaCount: 3
+
 healthCheck:
   enabled: true
   numWorkers: 10

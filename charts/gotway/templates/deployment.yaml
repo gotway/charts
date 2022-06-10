@@ -15,6 +15,9 @@ spec:
       labels:
         {{ $selectorLabels | nindent 8  }}
     spec:
+      {{ if and .Values.ha.enabled (gt (int .Values.ha.replicaCount) 0) }}
+      replicas: {{ .Values.ha.replicaCount }}
+      {{ end}}
       serviceAccountName: {{ $fullName }}
       containers:
         - name: {{ $fullName }}
