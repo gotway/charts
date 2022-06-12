@@ -14,4 +14,15 @@ rules:
       - get
       - list
       - watch
+  {{ if .Values.ha.enabled }}
+  - apiGroups:
+      - coordination.k8s.io
+    resources:
+      - leases
+    verbs:
+      - get
+      - watch
+      - create
+      - update
+  {{ end }}
 {{ end }}
