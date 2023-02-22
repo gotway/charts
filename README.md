@@ -1,3 +1,3 @@
 # charts
 
-DEPRECATED: moved to [mmontes11/charts](https://github.com/mmontes11/charts)
+DEPRECATED: moved to in-repo [charts](https://github.com/gotway/gotway/tree/master/deploy/charts)
